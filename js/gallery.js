@@ -82,7 +82,44 @@ gallery.innerHTML = images.reduce((html, item) => html +
   </a>
 </li>`,"");
 
+gallery.addEventListener("click", (event) => {
+  event.preventDefault();
+  const myModal = basicLightbox.create(
+    `<img src=${event.target.dataset.source} />`, {
+      onShow: (myModal) => console.log('onShow', myModal),
+      onClose: (myModal) => console.log('onClose', myModal)})
+      
+      myModal.show((myModal) => console.log('finished show()', myModal)) 
+      
+     function openCloseModalWindow() {
+      if(event.target.nodeName !== 'IMG'){
+        return;
+      };
+    }   
+    openCloseModalWindow(); 
+     function handleEsc(event) {
+      if (event.code === 'Escape') {
+          myModal.close();
+          document.removeEventListener('keydown', handleEsc); 
+      }
+    }
+  document.addEventListener('keydown', handleEsc); 
+}); 
+  
+    
+    
+   
+    
+    
+      
+    
 
+
+
+
+
+
+/*
 gallery.addEventListener("click", (event) => {
   event.preventDefault();
     
@@ -107,81 +144,6 @@ gallery.addEventListener("click", (event) => {
 });
 
 
-/*const clickOnImg = event.target.dataset.source;
-  if(clickOnImg ){
-  myModal.show();
-  };*/
-
-/*
-document.querySelector('button.callbacks').onclick = (e) => {
-
-	const html = `
-		<h1>Callbacks</h1>
-		<p>Take a look at the console of your browser.<br>This lightbox will close automaticly to demonstrate the close-callback.</p>
-	`
-
-	const instance = basicLightbox.create(html, {
-		onShow: (instance) => console.log('onShow', instance),
-		onClose: (instance) => console.log('onClose', instance)
-	})
-
-	instance.show((instance) => console.log('finished show()', instance))
-
-	setTimeout(() => {
-		instance.close((instance) => console.log('finished close()', instance))
-	}, 3000)
-
-}
 */
-
-
-
-
-
-
-
-/*
-gallery.addEventListener("click", (event) => {
-  event.preventDefault();
-    
-  const myModal = basicLightbox.create(
-    `<img src=${event.target.dataset.source} />`);
-
-  const clickOnImg = event.target.dataset.source;
-  if(clickOnImg ){
-  myModal.show();
-  };
-
-  document.addEventListener('keydown', function(e) {
-    if (e.code === 'Escape') {
-      myModal.close();
-      document.removeEventListener('keydown', e); 
-    }
-    });
-});
-*/
-
-
-/*
-Сделай проверку, что клик именно на картинке при открытии
- модалки(если нет, то выход из функции) только после этого открывается модалка.
-*/
-
-/*
-gallery.addEventListener("click", (event) => {
-  event.preventDefault();
-  console.log(event.target);  
-  const myModal = basicLightbox.create(`<img src=${event.target.dataset.source} />`); 
-  myModal.show();
-
-      document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        myModal.close();   
-      }
-    });
-});
-*/
-
-
 
 
