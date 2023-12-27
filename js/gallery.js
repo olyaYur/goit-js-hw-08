@@ -90,7 +90,7 @@ gallery.addEventListener("click", (event) => {
       onClose: (myModal) => console.log('onClose', myModal)})
       
       myModal.show((myModal) => console.log('finished show()', myModal)) 
-      
+
      function openCloseModalWindow() {
       if(event.target.nodeName !== 'IMG'){
         return;
@@ -110,40 +110,4 @@ gallery.addEventListener("click", (event) => {
     
    
     
-    
-      
-    
-
-
-
-
-
-
-/*
-gallery.addEventListener("click", (event) => {
-  event.preventDefault();
-    
-  const myModal = basicLightbox.create(
-    `<img src=${event.target.dataset.source} />`, {
-    onShow: (myModal) => console.log('onShow', myModal),
-		onClose: (myModal) => console.log('onClose', myModal)})
-    
-    myModal.show((myModal) => console.log('finished show()', myModal))
-
-    setTimeout(() => {
-      myModal.close((myModal) => console.log('finished close()', myModal))
-    }, 3000)
-
-
-  document.addEventListener('keydown', function(e) {
-    if (e.code === 'Escape') {
-      myModal.close();
-      document.removeEventListener('keydown', e); 
-    }
-    });
-});
-
-
-*/
-
 
